@@ -158,8 +158,8 @@
 
 ### Additional Resources
 - **Deployed Link**: [Wealth Catalyst GitHub Pages](https://suman-angel1.github.io/hack24-wealth-catalyst/)
-- **Demo Video**: Place your `demo.mp4` or `demo.gif` in the `resources` folder.
-- **Video Transcript**: [Video Transcript Link](https://docs.google.com/document/d/13GiMTNb9MV1AWaTNnMeG9xTNjx97snQkBgeCo9z_hQQ/edit?tab=t.0)
+- **Demo Video**: [Resources Link](resources/Hacakthon Fortune 4.mp4)
+- **Demo Video Drive Link**: [Link](https://drive.google.com/file/d/1iWTsAMLP3E4LxHUkILdPqCyYt3xHOIuT/view?usp=sharing)
 - **Slides**: [Google Slides Link](https://docs.google.com/presentation/d/1rGIvye5RN4BAOVdBQ3PZQlmR1RQp0QRhj59FeEUFdX4/edit#slide=id.g31663189226_0_25)
 
 ---
