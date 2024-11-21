@@ -1,0 +1,36 @@
+<!-- app.component.html -->
+<!-- Toolbar with Menu Icon -->
+<mat-toolbar style="background: linear-gradient(to right, #b35e2e, #2e6bb3);">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span style="margin-left: 16px; font-weight: bold;">WEALTH CATALYST</span>
+</mat-toolbar>
+
+<!-- Sidenav Container -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened="false" class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item (click)="navigateTo('home')">
+                <mat-icon mat-list-icon>home</mat-icon>
+                <div mat-line>Home</div>
+            </a>
+            <a mat-list-item (click)="navigateTo('goal-setter')">
+                <mat-icon mat-list-icon>flag</mat-icon>
+                <div mat-line>Goal Setter</div>
+            </a>
+            <a mat-list-item (click)="navigateTo('trade-calendar')">
+                <mat-icon mat-list-icon>calendar_today</mat-icon>
+                <div mat-line>Trade Calendar</div>
+            </a>
+            <a mat-list-item (click)="navigateTo('trade-replay')">
+                <mat-icon mat-list-icon>replay</mat-icon>
+                <div mat-line>Trade Replay</div>
+            </a>
+            <!-- Add more list items as needed -->
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

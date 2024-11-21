@@ -1,0 +1,21 @@
+<div class="main">
+    <div class="goal-section">
+        <div class="goals"> 
+            <app-goal-item
+                *ngFor="let goal of goals"
+                [icon]="goal.icon"
+                [text]="goal.text"
+                [chipText]="goal.chipText"
+                [startDate]="goal.startDate"
+                [endDate]="goal.endDate"
+                [value]="goal.value"
+                [bufferValue]="goal.bufferValue"    
+                [currentValue]="goal.currentValue"
+                [totalValue]="goal.totalValue"
+                [id]="goal.id"
+            >
+            </app-goal-item>
+        </div>
+        <button mat-raised-button color="primary" class="add-button" (click)="addANewGoal()">Add a New Goal</button>
+    </div>
+</div>

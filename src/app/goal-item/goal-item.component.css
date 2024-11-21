@@ -1,0 +1,48 @@
+.goal-item-card {
+  background: linear-gradient(45deg, #f0c9a3, #a9d0f5); /* Gradient background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.goal-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  color: #3f51b5; /* Update with the icon color used in action component */
+  font-size: 24px;
+  padding: 16px 0px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.goal-item-card mat-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333; /* Update with the title color used in action component */
+}
+
+.goal-item-card p {
+  font-size: 16px;
+  color: #666; /* Update with the text color used in action component */
+}
+
+.mat-chip {
+  font-size: 12px;
+}
+
+.mat-standard-chip {
+  min-height: 24px;
+}
+
+.mat-chip-list {
+  padding-top: 4px;
+  padding-bottom: 16px;
+}

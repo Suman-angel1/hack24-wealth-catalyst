@@ -1,0 +1,370 @@
+.card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .card {
+    flex: 1 1 calc(25% - 20px);
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .card h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .card p {
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+  
+  .current-status-card {
+    background: #f3e8ff;
+  }
+  
+  .target-card {
+    background: #eef2ff;
+  }
+  
+  .time-card {
+    background: #e8fcef;
+  }
+  
+  .investment-card {
+    background: #fff5e8;
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-icon {
+    color: #6c757d;
+    font-size: 1.5rem;
+  }
+  
+  .badge {
+    background: red;
+    color: #fff;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    margin-left: 5px;
+  }
+  
+  .chart-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .chart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .segment {
+    position: absolute;
+    font-size: 0.8rem;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .segment-min {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .segment-max {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+  
+  .color-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-right: 5px;
+  }
+  
+  .color-indicator.min {
+    background: #4a90d9; /* Darker */
+  }
+  
+  .color-indicator.max {
+    background: #d97a4a; /* Darker */
+  }
+
+  .market-movers {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .market-movers h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .market-movers .tabs {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  
+  .market-movers .tabs .tab-button {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .market-movers .tabs .tab-button.active {
+    background: #e6f0ff;
+    color: #003366;
+    font-weight: bold;
+  }
+  
+  .market-movers .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .market-movers .list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .market-movers .list li .stock-info h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #003366;
+  }
+  
+  .market-movers .list li .stock-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .market-movers .list li .stock-details {
+    text-align: right;
+  }
+  
+  .market-movers .list li .stock-details .price {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .market-movers .list li .stock-details .change {
+    display: block;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .market-movers .list li .stock-details .percentage {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .market-movers .list li .stock-details .percentage.positive {
+    color: #4caf50;
+  }
+  
+  .market-movers .list li .stock-details .percentage.negative {
+    color: #f44336;
+  }
+  
+  .market-movers .view-all {
+    text-align: right;
+    margin-top: 10px;
+  }
+  
+  .market-movers .view-all a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .market-movers .view-all a:hover {
+    text-decoration: underline;
+  }
+
+  .research-recommendations {
+    /* max-width: 900px; */
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .research-recommendations h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .recommendation-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  .recommendation-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .stock-info {
+    margin-bottom: 15px;
+  }
+  
+  .stock-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #003366;
+  }
+  
+  .stock-info p {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .tag {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .mft-buy {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .short-term {
+    background-color: #ff9800;
+    color: white;
+  }
+  
+  .target-expected {
+    background-color: #90caf9;
+    color: #003366;
+  }
+  
+  .intraday {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .details {
+    margin-bottom: 15px;
+  }
+  
+  .details p {
+    margin: 5px 0;
+  }
+  
+  .ltp,
+  .target,
+  .recommended-price,
+  .stop-loss {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .value {
+    font-weight: bold;
+  }
+  
+  .change {
+    font-size: 12px;
+  }
+  
+  .change.positive {
+    color: #4caf50;
+  }
+  
+  .update-info {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 15px;
+  }
+  
+  .action-btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .buy-btn {
+    background-color: #4caf50;
+  }
+  
+  .sell-btn {
+    background-color: #f44336;
+  }
+  
+  .view-all {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  .view-all a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .view-all a:hover {
+    text-decoration: underline;
+  }

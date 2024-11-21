@@ -1,0 +1,28 @@
+<mat-card class="goal-item-card" (click)="navigate()">
+    <mat-icon class="icon">{{ icon }}</mat-icon>
+  <mat-card-content class="content">
+    <mat-card-title>{{ text }}</mat-card-title>
+    <mat-chip-list>
+        <mat-chip color="primary">
+            {{chipText}}
+        </mat-chip>
+    </mat-chip-list>
+    <p>{{startDate | date}}</p>
+    <p>{{endDate | date}}</p>
+    <div style="display: flex; flex-direction: row;">
+        <p style="font-weight: bold; margin-right: 8px">{{'Current status: ' }}</p>
+        <p>{{'₹' + currentValue + '/₹' + totalValue }}</p>
+    </div>
+    <div *ngIf="interestedIn" style="display: flex; flex-direction: row;">
+        <p style="font-weight: bold; margin-right: 8px">{{'Interested in: '}}</p>
+        <p>{{'Interested in: ' + interestedIn.join(', ')}}</p>
+    </div>
+    <mat-progress-bar
+          class="example-margin"
+          color="primary"
+          mode="determinate"
+          [value]="value"
+          [bufferValue]="bufferValue">
+    </mat-progress-bar>
+  </mat-card-content>
+</mat-card>

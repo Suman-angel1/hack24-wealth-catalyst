@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Add New Goal</h1>
+<div mat-dialog-content>
+    <form [formGroup]="goalForm" class="form-group">
+        <mat-form-field appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+                <mat-option *ngFor="let category of categories" [value]="category.text">
+                    {{ category.text }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Investment Amount per month</mat-label>
+            <input matInput formControlName="investmentAmount" type="number" />
+            <span matPrefix>₹&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Tenure in months</mat-label>
+            <input matInput formControlName="tenure" type="number" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Expected Return</mat-label>
+            <input matInput formControlName="expectedReturn" type="number" />
+            <span matPrefix>₹&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Interested In</mat-label>
+            <mat-select formControlName="interestedIn" multiple>
+                <mat-option *ngFor="let interest of interests" [value]="interest">
+                    {{ interest }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [disabled]="!goalForm.valid" (click)="onSubmit()">Submit</button>
+</div>

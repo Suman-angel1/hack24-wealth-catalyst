@@ -1,0 +1,223 @@
+<div class="card-container">
+    <div class="card current-status-card">
+        <div class="icon-container">
+            <mat-icon>donut_small</mat-icon>
+            </div>
+        <h2>Current Status </h2>
+        <div class="chart-container">
+            <div class="chart" [style.background]="getChartGradient()">
+            </div>
+            <ul>
+                <li><span class="color-indicator min"></span> {{'Current progress '+ minPercentage +'%'}}</li>
+                <li><span class="color-indicator max"></span> {{'Remaining progress '+ maxPercentage +'%'}}</li>
+            </ul>
+        </div>
+    </div>
+  
+    <div class="card target-card">
+      <div class="icon-container">
+        <mat-icon>adjust</mat-icon>
+      </div>
+      <div style="display: flex; flex-direction: row; justify-content: space-between;">
+          <div>
+              <h2>Target </h2>
+              <p style="font-size: 20px; color: green; font-weight: bold;">{{'₹' + goal.totalValue }}</p>
+              <h2>Monthly Investment</h2>
+              <p style="font-size: 20px; color: green; font-weight: bold;">{{'₹' + goal.investmentAmount }}</p>
+          </div>
+          <div>
+              <h2>Current Value </h2>
+              <p style="font-size: 20px; color: rgb(233, 105, 25); font-weight: bold;">{{'₹' + goal.currentValue }}</p>
+          </div>
+      </div>
+    </div>
+  
+    <div class="card time-card">
+      <div class="icon-container">
+        <mat-icon>timer</mat-icon>
+      </div>
+      <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div>
+            <h2>Start Date </h2>
+            <p style="font-size: 20px; color: green; font-weight: bold;">{{ goal.startDate | date}}</p>
+            <h2>Months Remaining</h2>
+            <p style="font-size: 20px; color: green; font-weight: bold;">{{monthsRemaining(goal.startDate, goal.endDate) }}</p>
+        </div>
+        <div>
+            <h2>End Date</h2>
+            <p style="font-size: 20px; color: rgb(233, 105, 25); font-weight: bold;">{{goal.endDate | date }}</p>
+        </div>
+    </div>
+    </div>
+  
+    <div class="card investment-card">
+      <div class="icon-container">
+        <mat-icon>payments</mat-icon>
+      </div>
+      <h2>Investment Tools</h2>
+      <mat-chip-list>
+        <mat-chip color="primary" *ngFor="let interest of goal.interestedIn" >
+          {{interest}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+    <div *ngIf="goal.currentValue > 0" class="market-movers" style="flex: 1;">
+        <h2>Portfolio</h2>
+        <div class="tabs">
+            <button
+            class="tab-button"
+            [class.active]="activeTab === 'gainers'"
+            (click)="setActiveTab('gainers')"
+            >
+            Gainers
+            </button>
+            <button
+            class="tab-button"
+            [class.active]="activeTab === 'losers'"
+            (click)="setActiveTab('losers')"
+            >
+            Losers
+            </button>
+        </div>
+    
+        <ul class="list">
+            <li *ngFor="let stock of activeStocks">
+            <div class="stock-info">
+                <h3>{{ stock.symbol }}</h3>
+                <p>{{ stock.name }}</p>
+            </div>
+            <div class="stock-details">
+                <span class="price">{{ stock.price | number: '1.2-2' }}</span>
+                <span class="change">{{ stock.change | number: '1.2-2' }}</span>
+                <span
+                class="percentage"
+                [class.positive]="stock.percentageChange > 0"
+                [class.negative]="stock.percentageChange < 0"
+                >
+                {{ stock.percentageChange | number: '1.2-2' }}%
+                </span>
+            </div>
+            </li>
+        </ul>
+        <div class="view-all">
+            <a href="#">VIEW ALL &rarr;</a>
+        </div>
+    </div>
+    
+    <div style="flex: 2; margin: 20px;">
+        <div class="research-recommendations">
+        <h2>Research Recommendations</h2>
+        
+        <div class="recommendation-cards">
+            <div class="recommendation-card">
+            <div class="stock-info">
+                <h3>AFFLE</h3>
+                <p>Affle (India) Limited</p>
+            </div>
+            <div class="tags">
+                <span class="tag mft-buy">MTF BUY</span>
+                <span class="tag short-term">SHORT TERM</span>
+                <span class="tag target-expected">5.08% TARGET EXPECTED</span>
+            </div>
+            <div class="details">
+                <div class="ltp">
+                <p>LTP:</p>
+                <p class="value">1,573.45 <span class="change positive">+31.55 (+2.05%)</span></p>
+                </div>
+                <div class="target">
+                <p>Target:</p>
+                <p class="value">1,675</p>
+                </div>
+                <div class="recommended-price">
+                <p>Recommended Price:</p>
+                <p class="value">1,592.00 - 1,594.00</p>
+                </div>
+                <div class="stop-loss">
+                <p>StopLoss:</p>
+                <p class="value">1,550</p>
+                </div>
+            </div>
+            <div class="update-info">
+                <p>Updated on: 19 Nov 2024, 02:57 pm</p>
+            </div>
+            <button class="action-btn buy-btn">BUY</button>
+            </div>
+        
+            <!-- Similar structure for other cards -->
+            <div class="recommendation-card">
+            <div class="stock-info">
+                <h3>CRUDEOIL</h3>
+                <p>16 Dec 2024 PE 5700.00</p>
+            </div>
+            <div class="tags">
+                <span class="tag short-term">SHORT TERM</span>
+                <span class="tag target-expected">59.38% TARGET EXPECTED</span>
+            </div>
+            <div class="details">
+                <div class="ltp">
+                <p>LTP:</p>
+                <p class="value">140.50 <span class="change positive">+0.40 (+0.29%)</span></p>
+                </div>
+                <div class="target">
+                <p>Target:</p>
+                <p class="value">255</p>
+                </div>
+                <div class="recommended-price">
+                <p>Recommended Price:</p>
+                <p class="value">157.00 - 160.00</p>
+                </div>
+                <div class="stop-loss">
+                <p>StopLoss:</p>
+                <p class="value">104</p>
+                </div>
+            </div>
+            <div class="update-info">
+                <p>Updated on: 19 Nov 2024, 11:01 pm</p>
+            </div>
+            <button class="action-btn buy-btn">BUY</button>
+            </div>
+        
+            <div class="recommendation-card">
+            <div class="stock-info">
+                <h3>ZINCMINI</h3>
+                <p>29 Nov 2024</p>
+            </div>
+            <div class="tags">
+                <span class="tag intraday">INTRADAY</span>
+                <span class="tag target-expected">2.12% TARGET LEFT</span>
+            </div>
+            <div class="details">
+                <div class="ltp">
+                <p>LTP:</p>
+                <p class="value">279.80 <span class="change positive">+1.25 (+0.45%)</span></p>
+                </div>
+                <div class="target">
+                <p>Target:</p>
+                <p class="value">274</p>
+                </div>
+                <div class="recommended-price">
+                <p>Recommended Price:</p>
+                <p class="value">279.85 - 279.95</p>
+                </div>
+                <div class="stop-loss">
+                <p>StopLoss:</p>
+                <p class="value">283</p>
+                </div>
+            </div>
+            <div class="update-info">
+                <p>Updated on: 20 Nov 2024, 09:28 pm</p>
+            </div>
+            <button class="action-btn sell-btn">SELL</button>
+            </div>
+        </div>
+        
+        <div class="view-all">
+            <a href="#">View All Trading Ideas</a>
+        </div>
+    </div>
+</div>
+</div>
+

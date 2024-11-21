@@ -1,0 +1,73 @@
+<div class="container">
+    <!-- Block 1: Stocks in News -->
+    <div class="stock-block">
+      <h2>Your Stocks in News</h2>
+      <table class="stock-table">
+        <thead>
+          <tr>
+            <th>Stock Name</th>
+            <th>LTP</th>
+            <th>Change</th>
+            <th>% Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of stocksInNews">
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.ltp }}</td>
+            <td>{{ stock.change }}</td>
+            <td [ngClass]="{ 'positive': stock.percentageChange >= 0, 'negative': stock.percentageChange < 0 }">{{ stock.percentageChange }}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Block 2: Your Previously Bought Stocks Showing Rising Trends -->
+    <div class="stock-block">
+      <h2>Your Previously Bought Stocks Showing Rising Trends</h2>
+      <table class="stock-table">
+        <thead>
+          <tr>
+            <th>Stock Name</th>
+            <th>LTP</th>
+            <th>Change</th>
+            <th>% Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of risingStocks">
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.ltp }}</td>
+            <td>{{ stock.change }}</td>
+            <td [ngClass]="{ 'positive': stock.percentageChange >= 0, 'negative': stock.percentageChange < 0 }">{{ stock.percentageChange }}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Block 3: Sectors You Invest In -->
+    <div class="sector-block">
+      <h2>Sectors You Invest In</h2>
+      <div *ngFor="let sector of sectors">
+        <h3>{{ sector.name }}</h3>
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th>Stock Name</th>
+              <th>LTP</th>
+              <th>Change</th>
+              <th>% Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of sector.topStocks">
+              <td>{{ stock.name }}</td>
+              <td>{{ stock.ltp }}</td>
+              <td>{{ stock.change }}</td>
+              <td [ngClass]="{ 'positive': stock.percentageChange >= 0, 'negative': stock.percentageChange < 0 }">{{ stock.percentageChange }}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,188 @@
+<div class="container">
+  <div class="calendar">
+    <div class="header">
+      <button (click)="prevMonth()">&#9664;</button>
+      <span>{{ currentMonth }} {{ currentYear }}</span>
+      <button (click)="nextMonth()">&#9654;</button>
+    </div>
+    <div class="days">
+      <div *ngFor="let day of days">{{ day }}</div>
+    </div>
+    <div class="dates">
+      <div *ngFor="let date of dates" [ngClass]="selectedDate.day === date.day ? 'custom-cell selected-cell': 'custom-cell'" (click)="selectDate(date)">
+        <div class="date">{{ date.day }}</div>
+        <div class="events">
+            <div *ngFor="let event of eventService.getEvents(currentYear, currentMonthIndex, date.day).slice(0, 2)">{{ event }}</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedDate" class="add-event">
+      <h3>Add Event for {{ selectedDate.day }} {{ currentMonth }} {{ currentYear }}</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Event name</mat-label>
+        <input matInput [(ngModel)]="newEvent">
+      </mat-form-field>
+      <div style="display: flex; flex-direction: row;">
+        <button mat-raised-button color="primary" (click)="addAlert()">Add Event with Alert</button>
+        <button mat-raised-button color="primary" (click)="addEvent()" style="margin-left: 8px;">Add Event without Alert</button>
+      </div>
+    </div>
+  </div>
+  <div class="side-cards">
+    <mat-card class="card event-card">
+      <mat-card-content>
+        <mat-list>
+          <div style="display: flex; flex-direction: row;">
+            <mat-icon class="avatar-icon" mat-card-avatar>campaign</mat-icon>
+            <mat-card-title style="font-weight: bold;">MY EVENTS</mat-card-title>
+          </div>
+          <div style="margin-bottom: 16px;" *ngIf="currentYear && currentMonthIndex && selectedDate && (eventService.getEvents(currentYear, currentMonthIndex, selectedDate.day).length > 0) ; else noEvent" >
+            <mat-list-item role="listitem" *ngFor="let event of eventService.getEvents(currentYear, currentMonthIndex, selectedDate.day)">{{event}}</mat-list-item>
+          </div>
+          <mat-divider></mat-divider>
+          <div style="display: flex; flex-direction: row; margin-top: 32px;">
+            <mat-icon class="avatar-icon" mat-card-avatar>language</mat-icon>
+            <mat-card-title style="font-weight: bold;">GLOBAL EVENTS</mat-card-title>
+          </div>
+          <mat-list-item role="listitem" *ngFor="let event of globalEvents">{{event}}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <ng-template #noEvent >
+        <div style="margin-bottom: 16px; padding-top: 16px; padding-left: 16px;" class="mat-list-item mat-list-base"> No events... </div>
+      </ng-template>
+    </mat-card>
+    <mat-card class="card pl-card">
+      <mat-card-content *ngIf="!selectedDate || (selectedDate.day === todayDay)">
+        <mat-list>
+          <div style="display: flex; flex-direction: row;">
+            <mat-icon class="avatar-icon" mat-card-avatar>campaign</mat-icon>
+            <span style="font-weight: bold; font-size: 20px;">REALIZED P&L</span>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+            <div>
+                <div style="font-size: 20px;
+                font-weight: bold;
+                color: #e85b54;
+                margin-bottom: 10px;">₹500</div>
+            </div>
+            <div>
+                <div style="margin-bottom: 10px;" 
+                >Charges > ₹144</div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">List</div>
+                <div>Adit Birl Sun Lif Amc Ltd.</div>
+                <div>Fino Payment Bank Ltd.</div>
+            </div>
+            <div class="display-center">
+                <div style="font-weight: bold; margin-bottom: 4px;">Realized P&L</div>
+                <div>₹360</div>
+                <div>-₹4000</div>
+            </div>
+            <div class="display-center">
+                <div style="font-weight: bold; margin-bottom: 4px;">No. of Shares</div>
+                <div>20</div>
+                <div>10</div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div style="display: flex; flex-direction: row; margin-top: 32px;">
+            <mat-icon class="avatar-icon" mat-card-avatar>language</mat-icon>
+            <span style="font-weight: bold; font-size: 20px;">RESEARCH RECOMMENDATIONS</span>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">List</div>
+                <div>Affle(India) Limited</div>
+                <div>The Indian Hotel Co. Ltd.</div>
+            </div>
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">Category</div>
+                <div>Cash (ST)</div>
+                <div>Cash (ST)</div>
+            </div>
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">Price</div>
+                <div>₹1573.45</div>
+                <div>₹754.00</div>
+            </div>
+            <div class="display-center">
+                <div style="font-weight: bold; margin-bottom: 4px;">Expected Target</div>
+                <div>5.08%</div>
+                <div>2.28%</div>
+            </div>
+          </div>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-content *ngIf="selectedDate && (selectedDate.day < todayDay)">
+        <mat-list>
+          <div style="display: flex; flex-direction: row;">
+            <mat-icon class="avatar-icon" mat-card-avatar>campaign</mat-icon>
+            <span style="font-weight: bold; font-size: 20px;">REALIZED P&L</span>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+            <div>
+                <div style="font-size: 20px;
+                font-weight: bold;
+                color: #e85b54;
+                margin-bottom: 10px;">₹500</div>
+            </div>
+            <div>
+                <div style="margin-bottom: 10px;" 
+                >Charges > ₹144</div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">List</div>
+                <div>Adit Birl Sun Lif Amc Ltd.</div>
+                <div>Fino Payment Bank Ltd.</div>
+            </div>
+            <div class="display-center">
+                <div style="font-weight: bold; margin-bottom: 4px;">Realized P&L</div>
+                <div>₹360</div>
+                <div>-₹4000</div>
+            </div>
+            <div class="display-center">
+                <div style="font-weight: bold; margin-bottom: 4px;">No. of Shares</div>
+                <div>20</div>
+                <div>10</div>
+            </div>
+          </div>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-content *ngIf="selectedDate && (selectedDate.day > todayDay)">
+        <mat-list>
+          <div style="display: flex; flex-direction: row; margin-top: 32px;">
+            <mat-icon class="avatar-icon" mat-card-avatar>language</mat-icon>
+            <span style="font-weight: bold; font-size: 20px;">RESEARCH RECOMMENDATIONS</span>
+          </div>
+          <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 10px">
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">List</div>
+                <div>Affle(India) Limited</div>
+                <div>The Indian Hotel Co. Ltd.</div>
+            </div>
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">Category</div>
+                <div>Cash (ST)</div>
+                <div>Cash (ST)</div>
+            </div>
+            <div>
+                <div style="font-weight: bold; margin-bottom: 4px;">Price</div>
+                <div>₹1573.45</div>
+                <div>₹754.00</div>
+            </div>
+            <div class="display-center">
+                <div style="font-weight: bold; margin-bottom: 4px;">Expected Target</div>
+                <div>5.08%</div>
+                <div>2.28%</div>
+            </div>
+          </div>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

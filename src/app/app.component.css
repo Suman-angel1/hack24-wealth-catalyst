@@ -1,0 +1,35 @@
+/* app.component.css */
+.mat-toolbar {
+    background-color: #3f51b5;
+    color: white;
+    display: flex;
+    justify-content: start;
+}
+
+.mat-headline {
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sidenav-container {
+    height: calc(100vh - 100px); /* Adjust height based on banner height */
+}
+
+.sidenav {
+    width: 250px;
+}
+
+.mat-nav-list a {
+    font-size: 1.2rem;
+    color: #3f51b5;
+}
+
+.mat-nav-list a:hover {
+    background-color: #e0e0e0;
+}
+
+.mat-sidenav-content {
+    height: calc(100vh - 100px); /* Adjust height based on banner height */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
