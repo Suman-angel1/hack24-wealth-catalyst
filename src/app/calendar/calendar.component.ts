@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { LinkInvestmentComponent } from '../link-investment/link-investment.component';
 
 @Component({
   selector: 'app-calendar',
@@ -23,7 +25,7 @@ export class CalendarComponent implements OnInit {
   ]
   todayDay: number = new Date().getDate();
 
-  constructor(public eventService: EventService, private snackbar: MatSnackBar) {}
+  constructor(public eventService: EventService, private snackbar: MatSnackBar, private dialog: MatDialog) {}
 
   ngOnInit() {
     const today = new Date();
@@ -94,5 +96,12 @@ export class CalendarComponent implements OnInit {
       //this.selectedDate.events.push(this.newEvent);
       this.newEvent = '';
     }
+  }
+
+  addPredefinedEvents() {
+    this.dialog.open(LinkInvestmentComponent, {
+      width: '50%',
+      data: true
+    });
   }
 }

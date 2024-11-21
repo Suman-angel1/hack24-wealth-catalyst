@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoalService } from '../goal.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LinkInvestmentComponent } from '../link-investment/link-investment.component';
 
 @Component({
   selector: 'app-goal',
@@ -12,6 +14,7 @@ export class GoalComponent implements OnInit {
   goal: any = {};
   minPercentage = 0;
   maxPercentage = 100;
+  value = 0;
 
   activeTab: string = 'gainers'; // Default tab
 
@@ -23,7 +26,9 @@ export class GoalComponent implements OnInit {
     { symbol: 'EIDPARRY', name: 'Eid Parry India Ltd.', price: 822.25, change: 55.55, percentageChange: 7.25 },
   ];
 
-  constructor(private route: ActivatedRoute, private goalService: GoalService) { }
+  
+
+  constructor(private route: ActivatedRoute, private goalService: GoalService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -67,5 +72,11 @@ export class GoalComponent implements OnInit {
     this.activeTab = tab;
   }
 
+  onLinkInstrumentsClick() {
+    this.dialog.open(LinkInvestmentComponent, {
+      width: '50%',
+      data: false
+    });
+  }
 
 }

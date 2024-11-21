@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Select Instruments Type</h1>
+<div mat-dialog-content>
+    <mat-list>
+        <mat-list-item *ngFor="let instrument of instruments" style="cursor: pointer;">
+                <mat-icon mat-list-icon>{{instrument.icon}}</mat-icon>
+                <div mat-line>{{instrument.name}}</div>
+
+                <mat-icon style="margin-left: auto; color: gray;">chevron_right</mat-icon>
+        </mat-list-item>
+    </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

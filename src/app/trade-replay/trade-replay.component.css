@@ -100,3 +100,83 @@
   a:hover {
     text-decoration: underline;
   }
+
+  /* Container Styling */
+.trade-replay-dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #003366;
+}
+
+.controls label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #b04e04;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.tabs button.active {
+  background-color: #ff6f00;
+}
+
+.analysis-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.analysis-table th,
+.analysis-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.analysis-table th {
+  background-color: #b04e04;
+  color: #fff;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.charts .bar-chart,
+.charts .pie-chart {
+  width: 48%;
+}
+
+.stock-block h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}

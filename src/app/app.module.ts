@@ -50,6 +50,7 @@ import { GoalComponent } from './goal/goal.component';
 import { HomeComponent } from './home/home.component';
 import { TradeCalendarComponent } from './trade-calendar/trade-calendar.component';
 import { TradeReplayComponent } from './trade-replay/trade-replay.component';
+import { LinkInvestmentComponent } from './link-investment/link-investment.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { TradeReplayComponent } from './trade-replay/trade-replay.component';
     GoalItemComponent,
     AddNewGoalDialogComponent,
     GoalComponent,
-    CalendarComponent
+    CalendarComponent,
+    LinkInvestmentComponent
   ],
   imports: [
     BrowserModule,
